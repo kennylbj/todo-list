@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Input } from "./Input";
+import { ToDoList } from "./ToDoList";
+import "./App.css";
 
+const initialList = ["Shopping", "Play Game", "Study"];
 function App() {
+  const [todoList, setTodoList] = React.useState(initialList);
+
+  const handleConfirm = (value) => {
+    setTodoList([...todoList, value]);
+  };
+
+  const handleReset = () => {
+    setTodoList(initialList);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>To Do List</h1>
+      <ToDoList todoList={todoList} />
+      <Input onConfirm={handleConfirm} />
+      <button onClick={handleReset}>Reset</button>
     </div>
   );
 }

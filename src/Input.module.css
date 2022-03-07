@@ -1,0 +1,10 @@
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 12px;
+}
+
+input {
+  margin-right: 8px;
+}
