@@ -1,22 +1,21 @@
 import React from "react";
 
 // props: properties
-export const ToDoItem = ({ text }) => {
+export const ToDoItem = ({ title, toggled, onToggle }) => {
   // toggle: state, whether the item is toggled
   // setToggle, callback, update the toggle state
-  const [toggle, setToggle] = React.useState(false);
+  // const [toggle, setToggle] = React.useState(false);
 
   // this callback will be invoke when user clicks on this component
   const handleClick = () => {
-    // setToggle(flag => !flag);
-    setToggle(!toggle);
+    onToggle(title);
   };
   return (
     <div
-      style={toggle ? { textDecoration: "line-through" } : {}}
+      style={toggled ? { textDecoration: "line-through" } : {}}
       onClick={handleClick}
     >
-      {text}
+      {title}
     </div>
   );
 };
